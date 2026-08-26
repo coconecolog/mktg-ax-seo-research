@@ -1,25 +1,14 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Router as WouterRouter, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 
 /**
- * Search Desk design: keep navigation transparent while GitHub Pages serves the report from a repository subpath.
+ * Search Desk design: this report is a single reading surface, so every static-host path renders the report directly.
  */
 function Router() {
-  return (
-    <WouterRouter base={import.meta.env.BASE_URL}>
-      <Switch>
-        <Route path={"/"} component={Home} />
-        <Route path={"/404"} component={NotFound} />
-        {/* Final fallback route */}
-        <Route component={NotFound} />
-      </Switch>
-    </WouterRouter>
-  );
+  return <Home />;
 }
 
 // NOTE: About Theme

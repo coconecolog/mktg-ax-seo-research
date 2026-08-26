@@ -9,4 +9,5 @@
 - [ ] GitHub Pagesで参照可能な静的アセットへ画像パスを置き換える。
 - [ ] `dist/public`をGitHub Pages artifactとしてアップロードするワークフローを検証する。
 - [ ] Actionsのデプロイ成功を確認し、発行されたPages URLをブラウザで開く。
+- [ ] GitHub Pages設定画面に表示される正式な公開URLと、最新Actions実行のDeploy job結果を確認する。
 - [ ] 画像・フィルター・CSV保存・モバイル表示を公開URL上で確認する。

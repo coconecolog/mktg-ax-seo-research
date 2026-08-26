@@ -1,0 +1,141 @@
+export type Cluster =
+  | "立ち上げ・上申"
+  | "SEO・コンテンツ"
+  | "計測・ROI"
+  | "生成AI・AI検索"
+  | "業種・組織・GTM";
+
+export type Article = {
+  id: number;
+  cluster: Cluster;
+  keyword: string;
+  title: string;
+  intent: string;
+  audience: "全企業" | "新規事業" | "スタートアップ" | "メーカー";
+  stage: "構想" | "設計" | "実装" | "計測" | "拡張";
+  demand: number;
+  impact: number;
+  effort: number;
+  priority: "A" | "B" | "C";
+  outcome: string;
+  angle: string;
+};
+
+export const clusterMeta: Record<Cluster, { color: string; note: string }> = {
+  "立ち上げ・上申": { color: "#D85A46", note: "意思決定と最初の90日を支える" },
+  "SEO・コンテンツ": { color: "#247E74", note: "検索意図を資産へ変える" },
+  "計測・ROI": { color: "#B9822A", note: "上申に耐える数字を設計する" },
+  "生成AI・AI検索": { color: "#315D8F", note: "安全に品質と速度を両立する" },
+  "業種・組織・GTM": { color: "#6B5A78", note: "現場と事業の文脈に合わせる" },
+};
+
+export const articles: Article[] = [
+  { id: 1, cluster: "立ち上げ・上申", keyword: "デジタルマーケティング 始め方", title: "デジタルマーケティングは何から始める？1〜2名チームの90日ロードマップ", intent: "着手順を知りたい", audience: "全企業", stage: "構想", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "90日計画の合意", angle: "計測・1施策・定例改善の順で、失敗しにくい開始線を示す。" },
+  { id: 2, cluster: "立ち上げ・上申", keyword: "デジタルマーケティング 戦略 立て方", title: "デジタルマーケティング戦略の立て方：施策の前に決める7つのこと", intent: "戦略の型を知りたい", audience: "全企業", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "戦略1枚資料", angle: "目的・顧客・提供価値・チャネル・KPI・予算・判断会議を1枚に落とす。" },
+  { id: 3, cluster: "立ち上げ・上申", keyword: "デジタルマーケティング KPI", title: "デジタルマーケティングのKPI設計：経営に説明できるKGIからの逆算", intent: "KPIの作り方を知りたい", audience: "全企業", stage: "設計", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "KPIツリー", angle: "PV止まりを避け、受注・粗利・営業進捗までの因果を設計する。" },
+  { id: 4, cluster: "立ち上げ・上申", keyword: "デジタルマーケティング ROI", title: "デジタルマーケティングのROIをどう説明するか：稟議に通る試算の作り方", intent: "投資対効果を説明したい", audience: "全企業", stage: "設計", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "ROI試算シート", angle: "直接売上だけでなく、先行指標・検証期間・撤退条件を明記する。" },
+  { id: 5, cluster: "立ち上げ・上申", keyword: "マーケティング 予算 作り方", title: "マーケティング予算の作り方：ゼロベースで始める配分と見直し基準", intent: "予算を組みたい", audience: "全企業", stage: "設計", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "予算配分案", angle: "人件費・制作・広告・ツールを分け、学習コストを可視化する。" },
+  { id: 6, cluster: "立ち上げ・上申", keyword: "マーケティング 稟議 書き方", title: "マーケティング施策の稟議書の書き方：反対されにくい6つの構成", intent: "上申資料を作りたい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "稟議テンプレート", angle: "目的より先に『やらない場合の損失』と検証可能性を置く。" },
+  { id: 7, cluster: "立ち上げ・上申", keyword: "新規事業 マーケティング", title: "新規事業のマーケティング：認知ゼロから最初の顧客仮説を検証する方法", intent: "新規事業の集客を始めたい", audience: "新規事業", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "顧客仮説の検証", angle: "既存ブランドの知名度に頼らない、課題起点の最初の接点を設計する。" },
+  { id: 8, cluster: "立ち上げ・上申", keyword: "マーケティングチーム 立ち上げ", title: "マーケティングチームの立ち上げ方：最初の2人に必要な役割と会議", intent: "体制を作りたい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "役割分担表", angle: "戦略・実行・分析を兼務する前提で、外注する領域も先に決める。" },
+  { id: 9, cluster: "立ち上げ・上申", keyword: "少人数 マーケティング", title: "少人数マーケティングの進め方：1人担当でも施策を増やしすぎない優先順位", intent: "少人数で回したい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "週次の運用設計", angle: "『作る・配る・測る』を1週間単位で回す、兼務前提の実行型を示す。" },
+  { id: 10, cluster: "立ち上げ・上申", keyword: "マーケティング 施策 優先順位", title: "マーケティング施策の優先順位付け：インパクト×検証速度で迷いを減らす", intent: "施策を絞りたい", audience: "全企業", stage: "設計", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "優先度マトリクス", angle: "流行性ではなく、顧客課題・検証速度・可逆性で意思決定する。" },
+  { id: 11, cluster: "立ち上げ・上申", keyword: "BtoBマーケティング 施策", title: "BtoBマーケティング施策一覧：最初に選ぶべき1施策を目的別に整理", intent: "施策を比較したい", audience: "全企業", stage: "構想", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "施策選定", angle: "広告・SEO・展示会・ウェビナー・ABMを、検証条件と向き不向きで比較する。" },
+  { id: 12, cluster: "立ち上げ・上申", keyword: "デジタルマーケティング ロードマップ", title: "デジタルマーケティングのロードマップ：0〜12か月で何を積み上げるか", intent: "中期計画を作りたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "年間ロードマップ", angle: "基盤・検証・標準化・拡張を区切り、今やらないことも明示する。" },
+  { id: 13, cluster: "立ち上げ・上申", keyword: "GTM戦略", title: "GTM戦略とは？新規事業のための市場投入チェックリスト", intent: "GTMを理解したい", audience: "新規事業", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "GTMチェックリスト", angle: "市場・顧客・価値提案・販売・KPIを、検索集客の役割まで含めてつなぐ。" },
+  { id: 14, cluster: "立ち上げ・上申", keyword: "ペルソナ 作り方 BtoB", title: "BtoBペルソナの作り方：属性ではなく『検討が動く状況』を描く", intent: "顧客像を定義したい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "購買場面ペルソナ", angle: "役職・業種の羅列から脱却し、困りごと・代替案・承認者までを書く。" },
+  { id: 15, cluster: "立ち上げ・上申", keyword: "カスタマージャーニー BtoB", title: "BtoBカスタマージャーニーの作り方：検索から商談までの質問を可視化する", intent: "顧客行動を整理したい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "検索意図マップ", angle: "認知・比較・稟議・導入後の疑問を、コンテンツと営業接点に変換する。" },
+  { id: 16, cluster: "立ち上げ・上申", keyword: "3C分析 マーケティング", title: "3C分析をマーケティングに使う：机上の分析で終わらせない質問集", intent: "分析フレームを使いたい", audience: "全企業", stage: "構想", demand: 4, impact: 3, effort: 2, priority: "B", outcome: "3C仮説", angle: "顧客・競合・自社の差を、検索語と営業ヒアリングで検証できる形にする。" },
+  { id: 17, cluster: "立ち上げ・上申", keyword: "STP分析 BtoB", title: "BtoBのSTP分析：市場を狭く定めて、最初の勝ち筋をつくる", intent: "ターゲットを絞りたい", audience: "新規事業", stage: "構想", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "最初のICP", angle: "大きな市場規模より、既存代替の不満が強い狭い顧客群から始める。" },
+  { id: 18, cluster: "立ち上げ・上申", keyword: "バリュープロポジション 作り方", title: "バリュープロポジションの作り方：比較検討で選ばれる言葉に変える", intent: "価値提案を磨きたい", audience: "新規事業", stage: "設計", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "訴求メッセージ", angle: "機能説明を、顧客の仕事・不安・代替手段との違いへ翻訳する。" },
+  { id: 19, cluster: "立ち上げ・上申", keyword: "マーケティング 目標設定", title: "マーケティング目標の設定方法：売上目標を『次の行動』へ分解する", intent: "目標を決めたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "月次目標", angle: "受注だけを置かず、商談・MQL・指名検索などの先行指標を併記する。" },
+  { id: 20, cluster: "立ち上げ・上申", keyword: "マーケティング 部門 立ち上げ", title: "マーケティング部門を立ち上げる前に：経営・営業と合意すべき10項目", intent: "部門設計を知りたい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "部門合意書", angle: "権限、目標、営業への引き渡し、データ責任を曖昧にしない。" },
+  { id: 21, cluster: "SEO・コンテンツ", keyword: "BtoB SEO", title: "BtoB SEOとは？広告依存を減らすための全体像と始め方", intent: "SEOの全体像を知りたい", audience: "全企業", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "SEOの着手判断", angle: "検索流入、営業での再利用、資産化をBtoBの購買行動に沿って説明する。" },
+  { id: 22, cluster: "SEO・コンテンツ", keyword: "コンテンツSEO 始め方", title: "コンテンツSEOの始め方：最初の10記事を失敗しないための設計", intent: "コンテンツSEOを始めたい", audience: "全企業", stage: "実装", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "最初の10本", angle: "ビッグワードでなく、営業現場の質問から初期テーマを選ぶ。" },
+  { id: 23, cluster: "SEO・コンテンツ", keyword: "SEO キーワード選定", title: "SEOキーワード選定の方法：検索数だけで決めないBtoBの優先順位", intent: "キーワードを選びたい", audience: "全企業", stage: "設計", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "キーワード台帳", angle: "検索意図、商談への近さ、勝てる独自性を同じ表で比較する。" },
+  { id: 24, cluster: "SEO・コンテンツ", keyword: "SEO記事 構成", title: "SEO記事の構成案の作り方：上位記事の要約で終わらせない設計法", intent: "構成を作りたい", audience: "全企業", stage: "実装", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "再現可能な構成", angle: "検索意図、読者の判断、一次情報、次の行動の4層で見出しを組む。" },
+  { id: 25, cluster: "SEO・コンテンツ", keyword: "SEO記事 書き方", title: "SEO記事の書き方：専門性を薄めず、初学者にも届く文章の型", intent: "記事を書きたい", audience: "全企業", stage: "実装", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "執筆ガイド", angle: "結論・判断基準・具体例・注意点をつなぎ、専門用語の連打を避ける。" },
+  { id: 26, cluster: "SEO・コンテンツ", keyword: "BtoB コンテンツマーケティング", title: "BtoBコンテンツマーケティングの戦略：記事を商談の前進に使う方法", intent: "コンテンツ戦略を作りたい", audience: "全企業", stage: "設計", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "ファネル別設計", angle: "集客記事、比較記事、導入検討記事を営業の会話に接続する。" },
+  { id: 27, cluster: "SEO・コンテンツ", keyword: "SEO 内部対策", title: "SEO内部対策チェックリスト：記事を増やす前に直したい基本項目", intent: "サイトを整えたい", audience: "全企業", stage: "実装", demand: 5, impact: 4, effort: 3, priority: "A", outcome: "技術チェック", angle: "タイトル、見出し、リンク、速度、インデックスを少人数チーム向けに絞る。" },
+  { id: 28, cluster: "SEO・コンテンツ", keyword: "Search Console 使い方", title: "Search Consoleの使い方：記事ネタと改善点を毎週見つける5画面", intent: "Search Consoleを使いたい", audience: "全企業", stage: "計測", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "週次分析習慣", angle: "表示回数、CTR、クエリ、ページ、インデックスを『次の作業』に変える。" },
+  { id: 29, cluster: "SEO・コンテンツ", keyword: "GA4 SEO 分析", title: "GA4でSEOを分析する方法：流入数から問い合わせまで追う設定", intent: "SEO成果を分析したい", audience: "全企業", stage: "計測", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "流入別コンバージョン", angle: "オーガニック流入と、資料請求・商談・売上の距離を短くする。" },
+  { id: 30, cluster: "SEO・コンテンツ", keyword: "SEO 効果測定", title: "SEOの効果測定：順位・PVだけでは足りないBtoBの評価指標", intent: "SEO効果を測りたい", audience: "全企業", stage: "計測", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "SEO月次レポート", angle: "検索可視性、良質流入、CV、商談関与を段階別に追う。" },
+  { id: 31, cluster: "SEO・コンテンツ", keyword: "SEO記事 リライト", title: "SEO記事のリライト方法：新規記事より先に伸ばすべきページの見つけ方", intent: "既存記事を改善したい", audience: "全企業", stage: "拡張", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "リライト優先表", angle: "順位11〜30位、表示回数、商談近接性で候補を選ぶ。" },
+  { id: 32, cluster: "SEO・コンテンツ", keyword: "SEO 競合分析", title: "SEO競合分析のやり方：競合の真似ではなく『勝てる余白』を探す", intent: "競合を調べたい", audience: "全企業", stage: "設計", demand: 5, impact: 4, effort: 3, priority: "A", outcome: "競合ギャップ", angle: "誰が書いたか、何が欠けているか、どこを一次情報で上回るかを見る。" },
+  { id: 33, cluster: "SEO・コンテンツ", keyword: "検索意図 調べ方", title: "検索意図の調べ方：キーワードの裏にある『次の意思決定』を読む", intent: "検索意図を理解したい", audience: "全企業", stage: "設計", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "意図ラベル", angle: "知りたい・比べたい・社内で説明したい・始めたいを見分ける。" },
+  { id: 34, cluster: "SEO・コンテンツ", keyword: "トピッククラスター SEO", title: "トピッククラスターとは？BtoBサイトで専門性を伝える設計図", intent: "サイト構造を作りたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "クラスター設計", angle: "親記事・子記事・サービスページの役割を明確にして内部リンクを設計する。" },
+  { id: 35, cluster: "SEO・コンテンツ", keyword: "サービスページ SEO", title: "サービスページのSEO：集客記事から問い合わせにつなげる情報設計", intent: "サービスページを改善したい", audience: "全企業", stage: "実装", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "CV導線改善", angle: "機能一覧で終わらせず、対象課題・導入条件・比較軸を補う。" },
+  { id: 36, cluster: "SEO・コンテンツ", keyword: "製品ページ SEO", title: "製品ページのSEO：型番検索と用途検索を両立させる方法", intent: "製品ページを最適化したい", audience: "メーカー", stage: "実装", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "製品流入の拡大", angle: "仕様だけでなく、選定条件・用途・代替案との違いを足す。" },
+  { id: 37, cluster: "SEO・コンテンツ", keyword: "導入事例 SEO", title: "導入事例をSEOに活かす：営業資料を検索される証拠へ変える", intent: "事例を活用したい", audience: "全企業", stage: "実装", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "事例コンテンツ型", angle: "成果だけでなく、導入前の判断と選定基準を構造化する。" },
+  { id: 38, cluster: "SEO・コンテンツ", keyword: "ホワイトペーパー SEO", title: "ホワイトペーパーとSEOの使い分け：読まれる記事からリード化する導線", intent: "資料DLを増やしたい", audience: "全企業", stage: "実装", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "記事→資料導線", angle: "ゲートを急がず、記事で課題の整理を終えた読者だけを資料へ送る。" },
+  { id: 39, cluster: "SEO・コンテンツ", keyword: "BtoB SEO 外注", title: "BtoB SEOの外注先の選び方：少人数チームが失敗しない発注条件", intent: "外注を検討したい", audience: "全企業", stage: "構想", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "発注要件書", angle: "記事本数で比べず、戦略・一次情報・計測・引き継ぎで評価する。" },
+  { id: 40, cluster: "SEO・コンテンツ", keyword: "コンテンツマーケティング 方針", title: "コンテンツマーケティングの方針を作る：書けることではなく勝てる論点を選ぶ", intent: "編集方針を作りたい", audience: "全企業", stage: "設計", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "編集方針書", angle: "自社の一次情報、顧客の質問、商談での証明力の重なりを探す。" },
+  { id: 41, cluster: "計測・ROI", keyword: "BtoB マーケティング KPI", title: "BtoBマーケティングのKPI：ファネル別に見るべき数字と避けるべき誤解", intent: "BtoBの指標を知りたい", audience: "全企業", stage: "設計", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "ファネルKPI", angle: "MQL数だけに頼らず、受注率・案件化速度・営業受容率を組み込む。" },
+  { id: 42, cluster: "計測・ROI", keyword: "BtoB コンテンツマーケティング ROI", title: "BtoBコンテンツマーケティングのROI：長期施策を途中で正しく判断する", intent: "コンテンツ投資を評価したい", audience: "全企業", stage: "計測", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "段階別ROI", angle: "初月から売上を求めず、可視性・有効流入・商談関与で評価を分ける。" },
+  { id: 43, cluster: "計測・ROI", keyword: "マーケティング ROI 計算", title: "マーケティングROIの計算方法：利益・投資額・期間を混同しない基本式", intent: "ROIを計算したい", audience: "全企業", stage: "計測", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "ROI計算ルール", angle: "売上、粗利、内製工数、外注費を揃え、比較可能な定義にする。" },
+  { id: 44, cluster: "計測・ROI", keyword: "KPIツリー 作り方", title: "KPIツリーの作り方：マーケティングから売上までを一枚でつなぐ", intent: "KPIツリーを作りたい", audience: "全企業", stage: "設計", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "経営共有図", angle: "式にできない指標を外し、担当者が週次で動かせるノードに絞る。" },
+  { id: 45, cluster: "計測・ROI", keyword: "MQL とは", title: "MQLとは？定義・SQLとの違い・営業に渡す基準を実務で決める", intent: "MQLを理解したい", audience: "全企業", stage: "設計", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "MQL定義", angle: "資料DL数をMQLにしない。課題、権限、検討時期などの質を合意する。" },
+  { id: 46, cluster: "計測・ROI", keyword: "SQL とは マーケティング", title: "SQLとは？マーケティングと営業で見込み度を揃えるための基礎", intent: "SQLを理解したい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "営業受容基準", angle: "営業が『追う価値がある』と判断する条件を言語化して返却理由も取る。" },
+  { id: 47, cluster: "計測・ROI", keyword: "CPL 改善", title: "CPLを改善する方法：安いリードではなく、商談につながる獲得単価へ", intent: "CPLを改善したい", audience: "全企業", stage: "計測", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "有効CPL", angle: "媒体別CPLに、MQL化・案件化を重ねて判断する。" },
+  { id: 48, cluster: "計測・ROI", keyword: "CAC 計算", title: "CACの計算方法：広告費だけでは見えない顧客獲得コストの全体像", intent: "CACを把握したい", audience: "スタートアップ", stage: "計測", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "CAC定義", angle: "営業・マーケ・制作の配賦ルールを先に決め、月ごとの揺れを説明する。" },
+  { id: 49, cluster: "計測・ROI", keyword: "LTV CAC", title: "LTV/CACとは？成長投資の健全性を読むための実務ガイド", intent: "ユニットエコノミクスを知りたい", audience: "スタートアップ", stage: "計測", demand: 4, impact: 5, effort: 3, priority: "B", outcome: "投資判断基準", angle: "定義の違いを整理し、初期事業での暫定値の置き方を示す。" },
+  { id: 50, cluster: "計測・ROI", keyword: "アトリビューション 分析", title: "アトリビューション分析の基本：BtoBの長い検討期間をどう評価するか", intent: "接点の貢献を知りたい", audience: "全企業", stage: "計測", demand: 4, impact: 4, effort: 4, priority: "B", outcome: "貢献度の見方", angle: "ラストクリック偏重を避け、初回・中間・商談直前の役割を分ける。" },
+  { id: 51, cluster: "計測・ROI", keyword: "マーケティング ダッシュボード", title: "マーケティングダッシュボードの作り方：経営・営業・担当者で見る数字を分ける", intent: "レポートを作りたい", audience: "全企業", stage: "計測", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "3者別ダッシュボード", angle: "数字を増やすのでなく、各会議で変えるべき行動に結びつける。" },
+  { id: 52, cluster: "計測・ROI", keyword: "GA4 BtoB 設定", title: "BtoB向けGA4設定：問い合わせ・資料請求・商談化を計測するイベント設計", intent: "GA4を設定したい", audience: "全企業", stage: "実装", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "CVイベント設計", angle: "汎用イベントでなく、検討度が違うコンバージョンを分けて取る。" },
+  { id: 53, cluster: "計測・ROI", keyword: "Search Console 活用", title: "Search Console活用術：検索クエリから商談に近いテーマを見つける", intent: "Search Consoleを深く使いたい", audience: "全企業", stage: "計測", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "高意図テーマ発掘", angle: "表示回数ではなく、比較・費用・導入などの高意図語を拾う。" },
+  { id: 54, cluster: "計測・ROI", keyword: "CRM MA 連携", title: "CRMとMAの連携：導入前に決めたいデータ項目と運用ルール", intent: "ツール連携を知りたい", audience: "全企業", stage: "実装", demand: 4, impact: 4, effort: 4, priority: "B", outcome: "データ設計", angle: "ツール比較ではなく、誰が何を更新し、何を見て動くかから逆算する。" },
+  { id: 55, cluster: "計測・ROI", keyword: "営業 マーケティング 連携", title: "営業とマーケティングの連携：リードを渡して終わらせない定例の作り方", intent: "部門連携を改善したい", audience: "全企業", stage: "実装", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "週次連携会", angle: "案件の質、失注理由、顧客の言葉をコンテンツとKPIに戻す。" },
+  { id: 56, cluster: "計測・ROI", keyword: "リードスコアリング 設計", title: "リードスコアリングの設計方法：複雑にしない、最初の5条件", intent: "リード評価を始めたい", audience: "全企業", stage: "実装", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "簡易スコア", angle: "行動点と属性点を最小限にし、営業フィードバックで更新する。" },
+  { id: 57, cluster: "計測・ROI", keyword: "リードナーチャリング BtoB", title: "BtoBリードナーチャリングの基本：検討がまだ浅い顧客を急かさない育成", intent: "ナーチャリングを始めたい", audience: "全企業", stage: "拡張", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "育成シナリオ", angle: "メルマガ配信の前に、停滞理由別の教育コンテンツを設計する。" },
+  { id: 58, cluster: "計測・ROI", keyword: "マーケティング レポート 作り方", title: "マーケティングレポートの作り方：上司が5分で判断できる月次報告", intent: "報告書を作りたい", audience: "全企業", stage: "計測", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "月次報告テンプレ", angle: "結果、解釈、次アクション、必要な意思決定の順に置く。" },
+  { id: 59, cluster: "計測・ROI", keyword: "SEO 予算", title: "SEO予算の決め方：記事数ではなく、目標と制作体制から逆算する", intent: "SEO予算を決めたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "SEO投資計画", angle: "戦略・制作・監修・リライト・技術改善を分けて費用対効果を考える。" },
+  { id: 60, cluster: "計測・ROI", keyword: "BtoB コンテンツマーケティング 予算", title: "BtoBコンテンツマーケティングの予算：内製・外注・AI活用の最適な配分", intent: "コンテンツ予算を知りたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "制作体制の選択", angle: "単価比較ではなく、一次情報を出す社内工数と品質責任まで含める。" },
+  { id: 61, cluster: "生成AI・AI検索", keyword: "生成AI マーケティング 活用", title: "生成AIをマーケティングで活用する方法：最初に任せるべき7つの業務", intent: "AI活用を始めたい", audience: "全企業", stage: "構想", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "AI活用バックログ", angle: "企画・調査・構成・分析・営業連携を、リスクと再現性で選ぶ。" },
+  { id: 62, cluster: "生成AI・AI検索", keyword: "ChatGPT マーケティング 活用", title: "ChatGPTをマーケティングで使う方法：担当者の思考を速くする実務例", intent: "ChatGPTの使い方を知りたい", audience: "全企業", stage: "実装", demand: 5, impact: 4, effort: 2, priority: "A", outcome: "実務プロンプト集", angle: "完成品を任せるのでなく、仮説・比較・下書きの速度を上げる。" },
+  { id: 63, cluster: "生成AI・AI検索", keyword: "生成AI コンテンツ制作", title: "生成AIでコンテンツ制作をする方法：品質を落とさない編集工程", intent: "AIで記事を作りたい", audience: "全企業", stage: "実装", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "AI編集フロー", angle: "一次情報、事実確認、専門家レビュー、更新責任を工程に組み込む。" },
+  { id: 64, cluster: "生成AI・AI検索", keyword: "AI SEO", title: "AI SEOとは？生成AI時代も変わらない検索品質の基本", intent: "AI時代のSEOを知りたい", audience: "全企業", stage: "構想", demand: 5, impact: 5, effort: 2, priority: "A", outcome: "SEO方針の再確認", angle: "AI利用の有無でなく、独自性・有用性・技術基盤が問われると整理する。" },
+  { id: 65, cluster: "生成AI・AI検索", keyword: "AEO とは", title: "AEOとは？SEOとの違いと、回答されやすい情報設計の基本", intent: "AEOを理解したい", audience: "全企業", stage: "構想", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "AEOの誤解解消", angle: "新しい流行語に飛びつかず、明確な回答・根拠・技術構造へ落とす。" },
+  { id: 66, cluster: "生成AI・AI検索", keyword: "GEO とは マーケティング", title: "GEOとは？生成AI検索で選ばれるために整えるべきコンテンツ資産", intent: "GEOを理解したい", audience: "全企業", stage: "構想", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "AI検索の方針", angle: "SEOと対立させず、一次情報と整理された専門知識の強化として扱う。" },
+  { id: 67, cluster: "生成AI・AI検索", keyword: "LLMO とは", title: "LLMOとは？BtoB企業が知っておくべきAI検索最適化の現在地", intent: "LLMOを理解したい", audience: "全企業", stage: "構想", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "用語の整理", angle: "略語の定義・できること・測れないことを、実務の意思決定に引き戻す。" },
+  { id: 68, cluster: "生成AI・AI検索", keyword: "AI Overview SEO", title: "AI Overviewに備えるSEO：FAQ量産より先に整えるべき4つの基盤", intent: "AI Overview対策を知りたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "基盤改善の優先表", angle: "明確な主張、裏付け、更新性、クロール可能性を中心に据える。" },
+  { id: 69, cluster: "生成AI・AI検索", keyword: "AI検索 対策", title: "AI検索対策の始め方：既存サイトを診断する10の質問", intent: "AI検索への対応を始めたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "自己診断", angle: "コンテンツ・構造・信頼・測定の4観点で優先順位を出す。" },
+  { id: 70, cluster: "生成AI・AI検索", keyword: "生成AI ガイドライン 作り方", title: "マーケティング部門の生成AIガイドライン：止めるためでなく、迷わず使うために", intent: "ガイドラインを作りたい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "部門ガイドライン", angle: "入力可否、出力レビュー、公開承認、利用ツールを業務別に決める。" },
+  { id: 71, cluster: "生成AI・AI検索", keyword: "生成AI プロンプト マーケティング", title: "マーケティング用プロンプトの作り方：良い指示より先に渡すべき材料", intent: "プロンプトを改善したい", audience: "全企業", stage: "実装", demand: 4, impact: 3, effort: 2, priority: "B", outcome: "プロンプト資産", angle: "顧客像、一次情報、制約、判定基準をテンプレート化する。" },
+  { id: 72, cluster: "生成AI・AI検索", keyword: "AI 競合分析", title: "AIで競合分析をする方法：速さと検証可能性を両立するリサーチ手順", intent: "AIで競合を調べたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "競合調査の時短", angle: "AIの要約を鵜呑みにせず、一次サイトと検索結果で事実を照合する。" },
+  { id: 73, cluster: "生成AI・AI検索", keyword: "AI キーワード選定", title: "AIでキーワード選定を効率化する：候補出しと最終判断の分担", intent: "AIでキーワードを選びたい", audience: "全企業", stage: "設計", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "候補出しの高速化", angle: "発散はAI、需要・競合・商談価値の判断は人が担う設計にする。" },
+  { id: 74, cluster: "生成AI・AI検索", keyword: "AI コンテンツ 品質管理", title: "AIコンテンツの品質管理：公開前レビューで確認する8つの項目", intent: "品質を管理したい", audience: "全企業", stage: "実装", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "公開チェックリスト", angle: "事実、独自性、引用、顧客への有用性、ブランド表現を明文化する。" },
+  { id: 75, cluster: "生成AI・AI検索", keyword: "生成AI ハルシネーション 対策", title: "生成AIのハルシネーション対策：マーケティング担当者のための事実確認フロー", intent: "誤情報を防ぎたい", audience: "全企業", stage: "実装", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "ファクトチェック工程", angle: "出典、数値、固有名詞、比較表、法的表現を重点確認する。" },
+  { id: 76, cluster: "生成AI・AI検索", keyword: "AI コンテンツ 人間 レビュー", title: "AIコンテンツに人間のレビューはなぜ必要か：担当者・専門家・法務の役割分担", intent: "レビュー体制を作りたい", audience: "全企業", stage: "実装", demand: 3, impact: 5, effort: 3, priority: "B", outcome: "レビュー責任表", angle: "誰が読むかで基準を変え、全員レビューによる停滞を避ける。" },
+  { id: 77, cluster: "生成AI・AI検索", keyword: "生成AI 情報セキュリティ マーケティング", title: "生成AIと情報セキュリティ：マーケティングが入力してはいけない情報", intent: "安全にAIを使いたい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "入力情報ルール", angle: "顧客情報、未公開情報、個人情報、契約情報を業務例で区分する。" },
+  { id: 78, cluster: "生成AI・AI検索", keyword: "生成AI 著作権 マーケティング", title: "生成AIと著作権：マーケティングコンテンツ公開前に確認する論点", intent: "著作権リスクを知りたい", audience: "全企業", stage: "構想", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "確認観点の整理", angle: "法的助言を代替せず、出典・画像・商標・学習データを確認する入口を示す。" },
+  { id: 79, cluster: "生成AI・AI検索", keyword: "生成AI マーケティング ROI", title: "生成AI活用のマーケティングROI：工数削減だけで終わらせない測り方", intent: "AI投資を評価したい", audience: "全企業", stage: "計測", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "AI投資評価", angle: "制作速度、実験回数、品質、成果の4つで投資効果を評価する。" },
+  { id: 80, cluster: "生成AI・AI検索", keyword: "生成AI 業務フロー マーケティング", title: "生成AIを組み込むマーケティング業務フロー：属人化しない運用テンプレート", intent: "AI運用を標準化したい", audience: "全企業", stage: "拡張", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "標準業務フロー", angle: "依頼、下調べ、作成、レビュー、公開、学習を一連のフローにする。" },
+  { id: 81, cluster: "業種・組織・GTM", keyword: "製造業 デジタルマーケティング", title: "製造業のデジタルマーケティング：営業が強い会社ほど最初に整えること", intent: "製造業の進め方を知りたい", audience: "メーカー", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "製造業の着手計画", angle: "展示会・代理店・営業の強みを残しながら、検索接点を増やす。" },
+  { id: 82, cluster: "業種・組織・GTM", keyword: "製造業 SEO", title: "製造業SEOの始め方：技術力を『検索される言葉』に変換する方法", intent: "製造業でSEOを始めたい", audience: "メーカー", stage: "設計", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "製造業キーワード台帳", angle: "製品名、工法、材質、用途、課題、規格を組み合わせてテーマを設計する。" },
+  { id: 83, cluster: "業種・組織・GTM", keyword: "製造業 コンテンツマーケティング", title: "製造業コンテンツマーケティング：営業資料に眠る技術知見を資産にする", intent: "製造業のコンテンツを作りたい", audience: "メーカー", stage: "実装", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "技術コンテンツ計画", angle: "カタログの転記で終わらせず、選定・失敗・比較の知識を引き出す。" },
+  { id: 84, cluster: "業種・組織・GTM", keyword: "BtoB メーカー ホームページ", title: "BtoBメーカーのホームページ改善：カタログサイトから問い合わせ導線へ", intent: "サイトを改善したい", audience: "メーカー", stage: "実装", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "サイト改善要件", angle: "用途、選定基準、事例、技術相談への導線を設計する。" },
+  { id: 85, cluster: "業種・組織・GTM", keyword: "製造業 導入事例 作り方", title: "製造業の導入事例の作り方：守秘に配慮しながら信頼を伝える構成", intent: "事例を作りたい", audience: "メーカー", stage: "実装", demand: 3, impact: 4, effort: 2, priority: "B", outcome: "事例テンプレート", angle: "社名を出せない場合も、課題・条件・選定理由・改善の型で価値を伝える。" },
+  { id: 86, cluster: "業種・組織・GTM", keyword: "技術コンテンツ マーケティング", title: "技術コンテンツマーケティング：技術者の知識を無理なく記事化する聞き方", intent: "技術者の協力を得たい", audience: "メーカー", stage: "実装", demand: 3, impact: 5, effort: 2, priority: "A", outcome: "技術者インタビュー型", angle: "執筆依頼でなく15分の質問から始め、編集者が検索意図へ翻訳する。" },
+  { id: 87, cluster: "業種・組織・GTM", keyword: "老舗企業 デジタルマーケティング", title: "老舗企業のデジタルマーケティング：変えない強みと変える接点の見極め方", intent: "老舗企業で始めたい", audience: "メーカー", stage: "構想", demand: 3, impact: 5, effort: 3, priority: "A", outcome: "変革テーマの合意", angle: "伝統・品質・営業関係を否定せず、顧客の情報収集行動へ合わせる。" },
+  { id: 88, cluster: "業種・組織・GTM", keyword: "マーケティング組織 変革", title: "マーケティング組織の変革：兼務・属人化から始める小さな標準化", intent: "組織を変えたい", audience: "メーカー", stage: "構想", demand: 3, impact: 5, effort: 3, priority: "B", outcome: "標準化の着手点", angle: "大規模再編の前に、商談情報・コンテンツ・レビューの流れを整える。" },
+  { id: 89, cluster: "業種・組織・GTM", keyword: "製造業 営業 DX", title: "製造業の営業DXとマーケティング：見積もり前の顧客理解を深める仕組み", intent: "営業DXを進めたい", audience: "メーカー", stage: "実装", demand: 4, impact: 4, effort: 4, priority: "B", outcome: "営業情報の活用", angle: "ツール導入より先に、検索・問い合わせ・商談の情報をつなぐ。" },
+  { id: 90, cluster: "業種・組織・GTM", keyword: "代理店 マーケティング メーカー", title: "代理店販売のメーカーがデジタルマーケティングを始めるときの設計", intent: "代理店との両立を知りたい", audience: "メーカー", stage: "構想", demand: 3, impact: 4, effort: 3, priority: "B", outcome: "チャネル方針", angle: "リードを奪う不安を減らし、代理店支援につながるコンテンツと分配を設計する。" },
+  { id: 91, cluster: "業種・組織・GTM", keyword: "新規事業 マーケティング 戦略", title: "新規事業のマーケティング戦略：PMF前後で変わる施策の優先順位", intent: "新規事業戦略を作りたい", audience: "新規事業", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "フェーズ別施策", angle: "認知拡大を急がず、課題仮説・提供価値・再現チャネルを検証する。" },
+  { id: 92, cluster: "業種・組織・GTM", keyword: "新規事業 SEO", title: "新規事業でSEOに取り組むべきか：認知ゼロのサービスに合う条件と順番", intent: "新規事業でSEOを判断したい", audience: "新規事業", stage: "構想", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "SEO投資判断", angle: "検索需要、検討期間、コンテンツの独自性、短期施策との併用で判断する。" },
+  { id: 93, cluster: "業種・組織・GTM", keyword: "テストマーケティング 方法", title: "テストマーケティングの方法：新規事業の仮説を小さく検証する7ステップ", intent: "市場検証をしたい", audience: "新規事業", stage: "実装", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "検証設計", angle: "完璧なLPや大量広告の前に、誰の何を確かめるかを決める。" },
+  { id: 94, cluster: "業種・組織・GTM", keyword: "新規事業 市場調査", title: "新規事業の市場調査：公開情報と顧客インタビューをどう組み合わせるか", intent: "市場を調べたい", audience: "新規事業", stage: "構想", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "調査設計書", angle: "市場規模だけでなく、今ある代替手段と購買の障壁を調べる。" },
+  { id: 95, cluster: "業種・組織・GTM", keyword: "スタートアップ GTM", title: "スタートアップのGTM戦略：最初の再現可能な顧客獲得をつくる", intent: "スタートアップGTMを作りたい", audience: "スタートアップ", stage: "構想", demand: 5, impact: 5, effort: 3, priority: "A", outcome: "最初のGTM仮説", angle: "ICP、価格、メッセージ、チャネル、学習サイクルを一つの実験にまとめる。" },
+  { id: 96, cluster: "業種・組織・GTM", keyword: "スタートアップ コンテンツマーケティング", title: "スタートアップのコンテンツマーケティング：創業者の知見を市場の信頼へ変える", intent: "コンテンツを始めたい", audience: "スタートアップ", stage: "実装", demand: 4, impact: 4, effort: 2, priority: "B", outcome: "創業者発コンテンツ", angle: "ブランド広告の代わりに、顧客課題への独自の見方を蓄積する。" },
+  { id: 97, cluster: "業種・組織・GTM", keyword: "サービスローンチ 戦略", title: "サービスローンチ戦略：リリース日に終わらせない30日間の集客設計", intent: "ローンチを成功させたい", audience: "新規事業", stage: "実装", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "ローンチ後計画", angle: "告知、顧客会話、検索コンテンツ、営業フォローを時間軸でつなぐ。" },
+  { id: 98, cluster: "業種・組織・GTM", keyword: "ABM 始め方", title: "ABMの始め方：大企業向け新規事業で最初の10社に集中する方法", intent: "ABMを始めたい", audience: "新規事業", stage: "実装", demand: 4, impact: 4, effort: 3, priority: "B", outcome: "対象アカウント設計", angle: "広告施策の前に、アカウント仮説・関係者・提供価値を深掘りする。" },
+  { id: 99, cluster: "業種・組織・GTM", keyword: "大企業 新規事業 マーケティング", title: "大企業の新規事業マーケティング：既存ブランドの強みと意思決定の壁を越える", intent: "大企業で新規事業を始めたい", audience: "新規事業", stage: "構想", demand: 4, impact: 5, effort: 3, priority: "A", outcome: "社内外の訴求整理", angle: "既存顧客・法務・営業との関係を考慮しつつ、市場の声を早く取る。" },
+  { id: 100, cluster: "業種・組織・GTM", keyword: "1人目 マーケター", title: "1人目マーケターの仕事：最初の半年で作るべき仕組みと捨てるべき仕事", intent: "初代担当の役割を知りたい", audience: "スタートアップ", stage: "構想", demand: 4, impact: 5, effort: 2, priority: "A", outcome: "初代担当の行動計画", angle: "何でも屋にならず、顧客理解・計測・再現可能な集客に時間を寄せる。" },
+];
+
+export const sourceLinks = [
+  { label: "Salesforce：中小企業のデジタルマーケティング完全ガイド", url: "https://www.salesforce.com/jp/small-business/marketing/digital-marketing-smb-guide/" },
+  { label: "Google Search Central：生成AIによるコンテンツのガイダンス", url: "https://developers.google.com/search/docs/fundamentals/using-gen-ai-content?hl=ja" },
+  { label: "Google Search Central：生成AI検索向け最適化ガイド", url: "https://developers.google.com/search/docs/fundamentals/ai-optimization-guide?hl=ja" },
+  { label: "東京都：AI導入・活用ガイドライン、生成AI利用の手引き", url: "https://www.digitalservice.metro.tokyo.lg.jp/business/ai/ai-guideline" },
+  { label: "Stripe：スタートアップのためのGTM戦略ガイド", url: "https://stripe.com/jp/resources/more/what-is-a-go-to-market-strategy-a-quick-gtm-guide-for-startups" },
+];

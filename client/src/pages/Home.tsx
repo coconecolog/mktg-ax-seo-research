@@ -24,6 +24,7 @@ import { articles, clusterMeta, sourceLinks, type Article, type Cluster } from "
 const clusters = Object.keys(clusterMeta) as Cluster[];
 const audiences = ["全企業", "新規事業", "スタートアップ", "メーカー"] as const;
 const stages = ["構想", "設計", "実装", "計測", "拡張"] as const;
+const assetPath = (filename: string) => `${import.meta.env.BASE_URL}assets/${filename}`;
 
 function score(article: Article) {
   return article.demand * 1.4 + article.impact * 1.8 - article.effort * 0.45;
@@ -94,7 +95,7 @@ export default function Home() {
     <div className="site-shell">
       <header className="topbar">
         <a className="brand" href="#top" aria-label="MKTG AX SEO 記事機会マップの先頭へ">
-          <img src="/manus-storage/mktg-ax-mark_54aaa0cb.png" alt="MKTG AXの抽象ロゴ" />
+          <img src={assetPath("mktg-ax-mark.webp")} alt="MKTG AXの抽象ロゴ" />
           <span className="brand-word">MKTG AX <em>/</em> RESEARCH</span>
         </a>
         <nav className="topnav" aria-label="ページ内ナビゲーション">
@@ -120,7 +121,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-art" aria-label="検索コンパスの抽象ビジュアル">
-            <img src="/manus-storage/seo-compass-hero_451d1768.jpg" alt="紙の地形図の上に置かれた、青緑と真鍮の検索コンパス" />
+            <img src={assetPath("seo-compass-hero.webp")} alt="紙の地形図の上に置かれた、青緑と真鍮の検索コンパス" />
           </div>
           <div className="hero-rule" />
         </section>
@@ -141,7 +142,7 @@ export default function Home() {
           </div>
           <div className="brief-aside">
             <div className="brief-card"><Lightbulb size={18} /><strong>このマップの使い方</strong><span>対象企業・実行段階・優先度で絞り、最初の10件を選んでください。タイトルを開くと、狙いと成果物を確認できます。</span></div>
-            <img src="/manus-storage/priority-orbit_51e78f9a.jpg" alt="紙の同心円とマーカーで構成された優先順位の抽象イメージ" />
+            <img src={assetPath("priority-orbit.webp")} alt="紙の同心円とマーカーで構成された優先順位の抽象イメージ" />
           </div>
         </section>
 
@@ -212,7 +213,7 @@ export default function Home() {
               {topTen.map((item, index) => <button key={item.id} type="button" onClick={() => { setExpanded(item.id); document.getElementById("opportunities")?.scrollIntoView({ behavior: "smooth" }); }}><span>{String(index + 1).padStart(2, "0")}</span><Dot article={item} compact /><strong>{item.title}</strong><ArrowUpRight size={15} /></button>)}
             </div>
           </div>
-          <div className="roi-art"><img src="/manus-storage/roi-gate_74215c47.jpg" alt="真鍮の扉と木製ブロックで表した、ROIの検証を進める抽象イメージ" /><div><Sparkles size={17} /><strong>検証のものさし</strong><span>月次の売上だけでなく、検索表示、良質流入、商談化、営業受容の順に評価します。</span></div></div>
+          <div className="roi-art"><img src={assetPath("roi-gate.webp")} alt="真鍮の扉と木製ブロックで表した、ROIの検証を進める抽象イメージ" /><div><Sparkles size={17} /><strong>検証のものさし</strong><span>月次の売上だけでなく、検索表示、良質流入、商談化、営業受容の順に評価します。</span></div></div>
         </section>
 
         <section id="playbook" className="playbook-section" aria-labelledby="playbook-title">
